@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Date with K8</title>
+  <style>
+     @font-face {
+  font-family: 'eurostile';
+  src: url('assets/fonts/eurostile.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+    }
+
+    @font-face {
+  font-family: 'recoleta';
+  src: url('assets/fonts/recoleta.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+    }
+   
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      float: left;
+      background: linear-gradient(to bottom, #221777, #2e0039);
+      font-family: 'Monaco', monospace;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 960px;
+      height: 540px;
+      aspect-ratio: 16/9;
+      border: none;
+      background-color: rgb(255, 255, 255);
+      overflow: hidden;
+    }
+
+    .game-container {
+      width: 960px;
+      height: 540px;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background: url('assets/endbg.png') no-repeat center center;
+      background-size: cover;
+      border-radius: 12px;
+      border: none;
+      overflow: hidden;
+    }
+
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    .text-box {
+      position: absolute;
+      bottom: 0%;
+      width: 860px;
+      height: 120px;
+      background-color: rgba(3, 4, 19, 0.8);
+      border:4px solid #211172;
+      border-radius: 15px;
+      padding: 20px;
+      color: white;
+      font-size: 16px;
+      z-index: 3;
+    }
+
+    .text-box h1 {
+      font-size: 16px;
+      color: #eeeeee;
+      font-family: 'recoleta';
+      overflow: hidden; 
+      white-space: nowrap; 
+      margin: 0 auto; 
+      letter-spacing: .15em; 
+      animation: 
+      typing 3.5s steps(30, end),
+      blink-caret .5s step-end infinite;
+      position: absolute;
+      z-index: 3;
+    }
+
+    .text-box h2 {
+      font-size: 16px;
+      color: #ff8080;
+      font-family: 'recoleta';
+      overflow: hidden; 
+      white-space: nowrap; 
+      margin: 0 auto; 
+      letter-spacing: .15em; 
+      position: absolute;
+      z-index: 3;
+    }
+
+    #nextButton {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+    }
+
+    .game-container button {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      border: none;
+      color: white;
+      background: none;
+      font-size: 16px;
+      font-family: 'eurostile';
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 4;
+    }
+
+    .game-container button:hover {
+        color: #a9a9a9;
+    }
+
+    .game-container button:active {
+        color: #c0ffc0;
+    }
+
+    .k8 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: url('assets/k8_creepy.png') no-repeat center center;
+      background-size: contain;
+      bottom: -5%;
+      left: 40%;
+    }
+
+    #fadeOutElement {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(157, 0, 0);
+      opacity: 0.8;
+      z-index: 2;
+    }
+
+    #fadeOut {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;                         
+    transition: opacity 2s ease-in; 
+    z-index: 4;
+    pointer-events: none;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="iframe"></div>
+    <div class="game-container">
+      <div class="text-box" id="textBox">
+        <h2> Survival Instinct</h2>
+        <h1><br>Well done! You are now ready to protect yourself against Gen-AI-aided
+          <br>ONLINE GROOMING & IMAGE ABUSE threats.
+          <br>  Stay safe online! 
+        </h1>
+      </div>
+      <a href="page26.html">
+       <button id="nextButton" onclick="nextgo()"><u>End</u></button>
+       <div id="fadeOut"></div>
+      </a>
+    </div>
+    </div>
+
+    <script>
+document.getElementById('nextButton').addEventListener('click', function(e) {
+    var fadeOut = document.getElementById('fadeOut');
+          setTimeout(() => {
+          fadeOut.style.opacity = 1;
+          }, 0); 
+});
+
+document.querySelector('.delayed-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    var self = this;
+    setTimeout(function() {
+        window.location.href = self.href; 
+    }, 2000);
+});
+    window.onload = function() {
+    const audio = new Audio('assets/sfxbling.mp3');
+    const playPromise = audio.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("Autoplay was prevented by the browser");
+        });
+    }
+}
+    </script>
+  </body>
+  </html>
